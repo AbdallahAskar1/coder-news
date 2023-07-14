@@ -1,0 +1,33 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Testing
+test/
+
+# Environment variables
+.env
+
+# Editor-specific files
+.vscode/
+.idea/
+*.swp
+
+# Build output
+dist/
+build/
+out/
+.DS_Store
+
+# Ignore all local development configuration files
+config.local.json
