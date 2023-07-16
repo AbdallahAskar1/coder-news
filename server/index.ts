@@ -1,16 +1,25 @@
-import express from "express";
-import { createPostController, listPostsController } from './controller/post.controller';
+import express, { ErrorRequestHandler } from 'express';
+import {
+  createPostController,
+  listPostsController,
+} from './controller/post.controller';
 const app = express();
 
-app.use(express.json());
+const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
+  console.error('error:', err);
+  return res.status(500).send('an unexpected error occurred please try again');
+};
 
-app.get("/", (_req, res) => {
-    res.send("hello world");
+app.use(express.json());
+app.get('/', (_req, res) => {
+  res.send('hello world');
 });
 
-app.get("/posts", listPostsController)
-app.post("/posts", createPostController)
+app.get('/posts', listPostsController);
+app.post('/posts', createPostController);
+
+app.use(errorHandler);
 
 app.listen(3000, () => {
-    console.log("server is running on port 3000");
+  console.log('server is running on port 3000');
 });
