@@ -3,8 +3,14 @@ import {
   createPostController,
   listPostsController,
 } from './controller/post.controller';
-const app = express();
 
+import asyncHandler from 'express-async-handler';
+import { initDb } from './datastore';
+
+(async ()=>{
+  await initDb()
+  const app = express();
+  
 const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   console.error('error:', err);
   return res.status(500).send('an unexpected error occurred please try again');
@@ -15,11 +21,13 @@ app.get('/', (_req, res) => {
   res.send('hello world');
 });
 
-app.get('/posts', listPostsController);
-app.post('/posts', createPostController);
+app.get('/posts', asyncHandler(listPostsController));
+app.post('/posts', asyncHandler(createPostController));
 
 app.use(errorHandler);
 
 app.listen(3000, () => {
   console.log('server is running on port 3000');
 });
+
+})()
