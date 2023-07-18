@@ -1,4 +1,4 @@
-import {Post} from "./types"
+import {Post, User} from "./types"
 
 // #> post API <# //
 
@@ -13,9 +13,17 @@ export interface getPostResponse {post:Post}
 
 // #> comment API <# //
 
+
 // #> Like API <# //
 
 
 // #> user API <# //
 
+export type signUpRequest =Pick<User,'firstName'|"lastName"|"email"|"password"|'username'>
+export interface signUpResponse {}
 
+export interface signInRequest {
+    login:string,
+    password:string
+}
+export type signInResponse = Pick<User,"email"|"firstName"|"lastName"|"username"|"id">

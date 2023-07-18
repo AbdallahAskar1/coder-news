@@ -6,6 +6,7 @@ import {
 
 import asyncHandler from 'express-async-handler';
 import { initDb } from './datastore';
+import { signInController, signUpController } from './controller/user.controller';
 
 (async ()=>{
   await initDb()
@@ -21,9 +22,11 @@ app.get('/', (_req, res) => {
   res.send('hello world');
 });
 
-app.get('/posts', asyncHandler(listPostsController));
-app.post('/posts', asyncHandler(createPostController));
+app.get('/v1/posts', asyncHandler(listPostsController));
+app.post('/v1/posts', asyncHandler(createPostController));
 
+app.post('/v1/signup',asyncHandler(signUpController))
+app.get("/v1/login",signInController)
 app.use(errorHandler);
 
 app.listen(3000, () => {
