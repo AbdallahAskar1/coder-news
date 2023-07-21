@@ -5,6 +5,7 @@ import { Database, open } from 'sqlite';
 import sqlite3 from 'sqlite3';
 
 export class SqlDataStore implements Datastore {
+    
     private db!: Database<sqlite3.Database, sqlite3.Statement>;
     public async openDb() {
         this.db = await open({
@@ -35,6 +36,10 @@ export class SqlDataStore implements Datastore {
     }
     async getUserByUsername(username: string): Promise<User | undefined> {
         return await this.db.get(`SELECT * FROM users WHERE userName = ?`,username);
+
+    }
+    async getUserById(id: string): Promise<User | undefined> {
+        return await this.db.get(`SELECT * FROM users WHERE id = ?`,id);
 
     }
     listPosts(): Promise<Post[]> {

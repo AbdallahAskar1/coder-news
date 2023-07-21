@@ -2,6 +2,9 @@ import { Datastore } from '..';
 import { User, Post, Comment, Like } from '../../types';
 
 export class InMemoryDatastore implements Datastore {
+    getUserById(_id: string): Promise<User | undefined> {
+        throw new Error('Method not implemented.');
+    }
     private user: User[] = [];
     private posts: Post[] = [];
     private likes: Like[] = [];

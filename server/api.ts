@@ -1,3 +1,4 @@
+import { Secret } from "jsonwebtoken"
 import {Post, User} from "./types"
 
 // #> post API <# //
@@ -20,10 +21,13 @@ export interface getPostResponse {post:Post}
 // #> user API <# //
 
 export type signUpRequest =Pick<User,'firstName'|"lastName"|"email"|"password"|'username'>
-export interface signUpResponse {}
+export interface signUpResponse {jwt:Secret}
 
 export interface signInRequest {
     login:string,
     password:string
 }
-export type signInResponse = Pick<User,"email"|"firstName"|"lastName"|"username"|"id">
+export type signInResponse = {
+    user:Pick<User,"email"|"firstName"|"lastName"|"username"|"id">
+    jwt:Secret
+}
