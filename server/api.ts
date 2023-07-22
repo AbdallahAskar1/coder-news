@@ -3,7 +3,7 @@ import {Post, User} from "./types"
 
 // #> post API <# //
 
-export type CreatePostRequest = Pick<Post, 'title' | 'url' | 'userId'>
+export type CreatePostRequest = Pick<Post, 'title' | 'url' >
 export interface CreatePostResponce {message:String}
 
 export interface ListPostsRequest {};

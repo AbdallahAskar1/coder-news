@@ -16,6 +16,7 @@ export const authMiddleware :Handler<any,any> = async (req,res,next)=>{
         if (!user) {
             throw "not found"
         }
+        res.locals.userId = user.id
         return next();
     }catch {
         return res.status(401).send({error:"invalid token "})

@@ -22,7 +22,7 @@ app.get('/', (_req, res) => {
   res.send('hello world');
 });
 app.post('/v1/signup',asyncHandler(signUpController))
-app.get("/v1/login",signInController)
+app.get("/v1/login",asyncHandler(signInController))
 
 app.use(authMiddleware);
 

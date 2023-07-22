@@ -13,12 +13,13 @@ export const createPostController: Handler<
     CreatePostResponce
 > = async(req, res) => {
     const data = req.body;
-    if (data.title && data.url && data.userId) {
+    if (data.title && data.url) {
+      
         const post: Post = {
             id: crypto.randomUUID(),
             title: data.title,
             url: data.url,
-            userId: data.userId,
+            userId: res.locals.userId,
             postedAt: Date.now(),
         };
        await db.createPost(post);
