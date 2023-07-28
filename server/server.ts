@@ -18,9 +18,13 @@ import { authMiddleware } from './middleware/AuthMiddleware';
   const app = express();
  
 app.use(express.json());
-app.get('/', (_req, res) => {
-  res.send('hello world');
+app.get("/",(_req,res)=>{
+  res.send(`<h1>Hello from server</h1>`)
+})
+app.get('/healthz', (_req, res) => {
+  res.send({status : "Healthy❣️"});
 });
+
 app.post('/v1/signup',asyncHandler(signUpController))
 app.get("/v1/login",asyncHandler(signInController))
 
@@ -29,9 +33,9 @@ app.use(authMiddleware);
 app.get('/v1/posts', asyncHandler(listPostsController));
 app.post('/v1/posts', asyncHandler(createPostController));
 app.use(errorHandler);
-
-app.listen(3000, () => {
-  console.log('server is running on port 3000');
+const port = process.env.PORT || 3000
+app.listen(port, () => {
+  console.log(`server is running on port ${port}`);
 });
 
 })()
