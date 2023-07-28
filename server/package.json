@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "18.17.0"
+    "node": "18.15.0"
   },
   "scripts": {
     "compile": "tsc --watch",
     "start:node": " node dist/server.js",
     "start:ts-node": "ts-node server.ts",
-    "start:prod": "pm2 delete coder-news;pm2 start --name coder-news ts-node server.ts"
+    "start:prod": "pm2 delete coder-news & pm2 start --name coder-news npx ts-node server.ts"
   },
   "keywords": [],
   "author": "",
