@@ -10,7 +10,7 @@
     "compile": "tsc --watch",
     "start": " node dist/server.js",
     "start2": "nodemon --exec ts-node server.ts",
-    "start:prod": "pm2 delete coder-news;pm2 start --name coder-news -f node dist/server.js"
+    "start:prod": "pm2 delete coder-news;pm2 start --name coder-news node dist/server.js"
   },
   "keywords": [],
   "author": "",
