@@ -26,7 +26,7 @@ Follow these steps to set up the Coder News web app locally on your machine:
 1. **Clone the repository:**  
    ```
    git clone https://github.com/abdallahAskar1/coder-news.git
-   cd coder-news
+   cd coder-news/server 
    ```
 
 2. **Install dependencies:**  
