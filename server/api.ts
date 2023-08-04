@@ -1,5 +1,5 @@
 import { Secret } from "jsonwebtoken"
-import {Post, User} from "./types"
+import {Comment, Post, User} from "./types"
 
 // #> post API <# //
 
@@ -13,6 +13,11 @@ export interface getPostRequest {};
 export interface getPostResponse {post:Post}
 
 // #> comment API <# //
+export type CreateCommentRequest = Pick<Comment,"comment" >
+export interface CreateCommentResponse {message:String}
+
+export type ListCommentRequest = Pick<Comment,'postId'>
+export interface ListCommentResponce {comments:Comment[]}
 
 
 // #> Like API <# //
