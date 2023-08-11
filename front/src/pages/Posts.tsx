@@ -1,14 +1,13 @@
-import  {  useState } from "react";
-import {Post} from "../../../server/types"
+// import  {  useState } from "react";
+// import {Post} from "../../../server/types"
 
 import { useQuery } from 'react-query'
 import { listPosts } from "../client";
 
 function PostsPage() {
-    const [posts, setPosts] = useState<Post[]>();
+  const {data, isLoading, error}= useQuery(['list-posts'], listPosts)
+    
 
-    const {data, isLoading, error}= useQuery(['list-posts'], listPosts)
-   
 
       if(isLoading){
         return(
@@ -25,18 +24,19 @@ function PostsPage() {
           )
         }
       
-    if(data){
-      setPosts(data.posts)
-    }
+
   return (
    
             <>
 
       <h1>List Posts 
-      {posts?.map(post=>post.title)}
+      {data?.posts?.map(post=>{
+        return(<div key={post.id}>{post.title}</div>)}
+        )
+        }
       </h1>
       <code>
-      {JSON.stringify(data?.posts[0])}
+      {/* {JSON.stringify(data?.posts[0])} */}
       </code>
     </>
     
