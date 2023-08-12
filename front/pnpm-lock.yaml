@@ -14,6 +14,9 @@ dependencies:
   '@emotion/styled':
     specifier: ^11.11.0
     version: 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.15)(react@18.2.0)
+  '@hyvor/hyvor-talk-react':
+    specifier: ^0.0.2
+    version: 0.0.2(react@18.2.0)
   framer-motion:
     specifier: ^10.15.1
     version: 10.15.1(react-dom@18.2.0)(react@18.2.0)
@@ -1763,6 +1766,19 @@ packages:
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
+
+  /@hyvor/hyvor-talk-base@0.0.3:
+    resolution: {integrity: sha512-rC/l/mQ8gk7BR8rKN/6AqWoIjedQDYrSwD/NmMwVZFukEjsrCvvWp3j+TEqfTLIPY1Z0CJZY6u8LJCT1HOLinA==}
+    dev: false
+
+  /@hyvor/hyvor-talk-react@0.0.2(react@18.2.0):
+    resolution: {integrity: sha512-BbgUCEoCQNv9p0jzfV6qeBQd6HvrC644QtcJKSW7aXjXrvE89Rwv3Lum1/1mKboeWaItcXZzUtQ4rxytlAdcIQ==}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@hyvor/hyvor-talk-base': 0.0.3
+      react: 18.2.0
+    dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}

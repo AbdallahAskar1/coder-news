@@ -3,6 +3,7 @@
 
 import { useQuery } from 'react-query'
 import { listPosts } from "../client";
+import PostCard from '../components/PostCard';
 
 function PostsPage() {
   const {data, isLoading, error}= useQuery(['list-posts'], listPosts)
@@ -23,21 +24,18 @@ function PostsPage() {
             </div>
           )
         }
-      
+      const Posts = data?.posts
 
   return (
    
             <>
 
-      <h1>List Posts 
-      {data?.posts?.map(post=>{
-        return(<div key={post.id}>{post.title}</div>)}
-        )
-        }
-      </h1>
-      <code>
-      {/* {JSON.stringify(data?.posts[0])} */}
-      </code>
+      
+      <PostCard {...Posts?.at(0)}/>
+      <PostCard {...Posts?.at(1)}/>
+      <PostCard {...Posts?.at(2)}/>
+      
+     
     </>
     
   )

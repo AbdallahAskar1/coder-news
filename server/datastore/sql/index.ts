@@ -1,4 +1,4 @@
-import { Datastore } from '..';
+import { Datastore } from '../dao/index';
 import { User, Post, Comment, Like } from '../../types';
 import path from 'path';
 import { Database, open } from 'sqlite';

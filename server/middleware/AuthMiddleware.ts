@@ -1,11 +1,11 @@
 import {Handler} from "../types"
 import { verifyToken } from "../auth";
-import { db } from "../datastore";
+import { db } from "../datastore/dao/index";
 export const authMiddleware :Handler<any,any> = async (req,res,next)=>{
     const authHeader = req.headers.authorization;
     const token =authHeader?.replace('Bearer ','')
-    console.log(authHeader)
-    console.log("token:",token)
+    // console.log(authHeader)
+    // console.log("token:",token)
     if (!token){
        return res.sendStatus(401);
     }
