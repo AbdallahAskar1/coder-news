@@ -20,6 +20,6 @@ export const createCommentController:HandlerWithParams<{postId:string},CreateCom
         userId: res.locals.userId,
       };
       await db.createComment(comment);
-      return res.send(201).send({'message':"comment created successfully"});
+      return res.status(201).send({'message':"comment created successfully"});
     
 }
