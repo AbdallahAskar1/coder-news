@@ -27,6 +27,7 @@ export interface Comment {
     id:string;
     userId:string;
     postId:string;
+    parent:number;
     comment:string;
     postedAt:number
 }

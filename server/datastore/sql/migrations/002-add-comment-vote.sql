@@ -3,7 +3,7 @@ CREATE TABLE comments (
   userId  VARCHAR NOT NULL,
   postId  VARCHAR NOT NULL,
   comment VARCHAR NOT NULL, 
-  parent  INTGER  NOT NUll,
+  parent  INTGER  NOT NUll DEFAULT 0,
   postedAt INTEGER NOT NULL,
   FOREIGN KEY (userId) REFERENCES users (id),
   FOREIGN KEY (PostId) REFERENCES posts (id)

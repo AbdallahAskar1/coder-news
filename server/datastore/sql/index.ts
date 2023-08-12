@@ -61,14 +61,21 @@ export class SqlDataStore implements Datastore {
     deletePost(_id: string): Promise<void> {
         throw new Error('Method not implemented.');
     }
-    createComment(_comment: Comment): Promise<void> {
-        throw new Error('Method not implemented.');
+    async createComment(comment: Comment): Promise<void> {
+       await this.db.run('INSERT INTO comments (id,postId,userId,comment,parent,postedAt) VALUES (?, ?, ?, ?, ?, ?)',
+        comment.id,
+        comment.postId,
+        comment.userId,
+        comment.comment,
+        comment.parent,
+        comment.postedAt
+   )
     }
-    listComment(_postId: string): Promise<Comment[] | undefined> {
-        throw new Error('Method not implemented.');
+    async listComment(postId: string): Promise<Comment[] | undefined> {
+       return await this.db.all('SELECT * FROM comments WHERE postId = ? ',postId);
     }
-    deleteComment(_id: string): Promise<void> {
-        throw new Error('Method not implemented.');
+    async deleteComment(id: string): Promise<void> {
+        await this.db.run('DELETE FROM comments WHERE id = ?',id)
     }
     createLike(_like: Like): Promise<void> {
         throw new Error('Method not implemented.');
