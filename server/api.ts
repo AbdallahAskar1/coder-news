@@ -13,7 +13,7 @@ export interface getPostRequest {};
 export interface getPostResponse {post:Post}
 
 // #> comment API <# //
-export type CreateCommentRequest = Pick<Comment,"comment" >
+export type CreateCommentRequest = Pick<Comment,"comment" | 'postId' |'parent' >
 export interface CreateCommentResponse {message:String}
 
 export type ListCommentRequest = Pick<Comment,'postId'>

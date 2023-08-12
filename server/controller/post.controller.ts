@@ -1,5 +1,5 @@
 import { Handler, Post } from '../types';
-import { db } from '../datastore';
+import { db } from '../datastore/dao';
 import crypto from 'crypto';
 import {
     CreatePostRequest,

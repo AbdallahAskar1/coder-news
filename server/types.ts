@@ -38,7 +38,12 @@ export type Handler<Req, Res> = RequestHandler<
     Partial<Req>,
     any
 >;
-
+export type HandlerWithParams<Params, Req, Res> = RequestHandler<
+  Partial <Params>,
+  Partial <WithError<Res>>,
+  Partial <Req>,
+  any
+>;
 export interface jwtObject {
     userId :string
 } 

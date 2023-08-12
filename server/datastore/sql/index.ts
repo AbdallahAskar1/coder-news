@@ -75,7 +75,7 @@ export class SqlDataStore implements Datastore {
        return await this.db.all('SELECT * FROM comments WHERE postId = ? ',postId);
     }
     async deleteComment(id: string): Promise<void> {
-        await this.db.run('DELETE FROM comments WHERE id = ?',id)
+         this.db.run('DELETE FROM comments WHERE id = ?',id)
     }
     createLike(_like: Like): Promise<void> {
         throw new Error('Method not implemented.');

@@ -1,5 +1,5 @@
 import { Handler, User } from "../types"
-import {db} from "../datastore/index"
+import {db} from "../datastore/dao"
 import {signInRequest, signInResponse, signUpRequest,signUpResponse} from "../api"
 import crypto from "crypto";
 import { signJwt } from "../auth";
@@ -30,13 +30,16 @@ export const signUpController:Handler<signUpRequest,signUpResponse> =async (req,
 
  export const signInController :Handler<signInRequest,signInResponse>=async(req,res)=>{
     const {login,password} = req.body;
-
+    console.log(req.body)
     if(!login || !password) {
+
         return res.sendStatus(403)
     }
     const userExist = await db.getUserByEmail(login) || await db.getUserByUsername(login);
     const passHash = crypto.pbkdf2Sync(password,process.env.PASS_SALT!,24,64,"sha512").toString('hex')
     if (!userExist || passHash !=userExist.password){
+       
+        
         return res.sendStatus(403)
     }
 
