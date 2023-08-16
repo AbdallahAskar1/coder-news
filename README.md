@@ -1,7 +1,7 @@
 
 
 # Coder News - Social Learning Resource Sharing Web App
-
+![coder-news-homePage](image.png)
 ## Table of Contents
 - [Introduction](#introduction)
 - [Features](#features)
