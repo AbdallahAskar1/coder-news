@@ -55,8 +55,10 @@ export class SqlDataStore implements Datastore {
             post.postedAt,
         );
     }
-    getPost(_id: string): Promise<Post | undefined> {
-        throw new Error('Method not implemented.');
+    async getPost(id: string): Promise<Post | undefined> {
+        // throw new Error('Method not implemented.');
+      const post=  await this.db.get('SELECT * FROM posts WHERE id = ?',id)
+      return post ;
     }
     deletePost(_id: string): Promise<void> {
         throw new Error('Method not implemented.');
@@ -77,6 +79,14 @@ export class SqlDataStore implements Datastore {
     async deleteComment(id: string): Promise<void> {
          this.db.run('DELETE FROM comments WHERE id = ?',id)
     }
+
+    async countComments(postId: string): Promise<number> {
+        const result = await this.db.get<{ count: number }>(
+          'SELECT COUNT(*) as count FROM comments WHERE postId = ?',
+          postId
+        );
+        return result?.count ?? 0;
+      }
     createLike(_like: Like): Promise<void> {
         throw new Error('Method not implemented.');
     }

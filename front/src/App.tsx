@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import PostPage from './pages/Post';
 import PostsPage from './pages/Posts';

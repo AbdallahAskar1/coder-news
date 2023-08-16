@@ -1,4 +1,4 @@
-import {Box,Button,Flex,Image, Link, LinkBox}from '@chakra-ui/react';
+import {Box,Button,Flex,Image, Link}from '@chakra-ui/react';
 import Logo from "../assets/coder-news-logo.svg"
 
 function Navbar(props) {

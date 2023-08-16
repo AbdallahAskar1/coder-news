@@ -6,6 +6,8 @@ import {
     CreatePostResponce,
     ListPostsResponse,
     ListPostsRequest,
+    getPostRequest,
+    getPostResponse,
 } from '../api';
 
 export const createPostController: Handler<
@@ -35,5 +37,20 @@ export  const listPostsController : Handler<
     ListPostsResponse
 > = async(_req, res) => {
     res.send({ posts: await db.listPosts() });
+};
+
+
+
+export const getPostController: Handler<
+    getPostRequest,
+    getPostResponse
+> = async (_req, res) => {
+    // const {id} =req.params
+    const id = '14475ba0-9054-4ab0-a03b-5f15767b8eab';
+    if (!id) {
+        return res.status(400).send({ error: 'id missing' });
+    }
+    const posta = await db.getPost(id);
+    return res.send({ post: posta });
 };
 

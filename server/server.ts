@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   createPostController,
+  getPostController,
   listPostsController,
 } from './controller/post.controller';
 
@@ -11,7 +12,7 @@ import asyncHandler from 'express-async-handler';
 import { initDb } from './datastore/dao';
 import { signInController, signUpController } from './controller/auth.controller';
 import { createCommentController } from './controller/comment.controller';
-import { authMiddleware } from './middleware/AuthMiddleware';
+// import { authMiddleware } from './middleware/AuthMiddleware';
 // import { authMiddleware } from './middleware/AuthMiddleware';
 
 (async ()=>{
@@ -33,13 +34,14 @@ app.get('/healthz', (_req, res) => {
 app.post('/v1/signup',asyncHandler(signUpController))
 app.get("/v1/login",asyncHandler(signInController))
 
-app.use(authMiddleware);
-
 app.get('/v1/posts', asyncHandler(listPostsController));
+app.get('/v1/post/:id', asyncHandler(getPostController));
+app.post('/v1/comment/:postId', asyncHandler(createCommentController));
+// app.use(authMiddleware);
+
 app.post('/v1/posts', asyncHandler(createPostController));
 
 
-app.post('/v1/comment/:postId', asyncHandler(createCommentController));
 
 app.use(errorHandler);
 const port = process.env.PORT || 3000 ;

@@ -19,6 +19,7 @@ export interface CreateCommentResponse {message:String}
 export type ListCommentRequest = Pick<Comment,'postId'>
 export interface ListCommentResponce {comments:Comment[]}
 
+export interface DeleteCommentResponse {message:String}
 
 // #> Like API <# //
 
